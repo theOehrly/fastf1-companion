@@ -1,0 +1,6 @@
+{
+  "version": { "license": "MIT" },
+  "summary": "FastF1 Companion allows you to connect FastF1 with your Formula1/F1 TV account.",
+  "categories": { "firefox": ["other"] },
+  "homepage": "https://github.com/theOehrly/fastf1-companion"
+}
