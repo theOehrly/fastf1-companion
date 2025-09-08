@@ -1,4 +1,11 @@
 // background.js
+// Initialize browser for Firefox/Edge
+let browser = chrome;
+
+if (typeof browser !== "undefined") {
+  browser = chrome;
+}
+
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "getCookie") {
     browser.cookies.get({
@@ -37,7 +44,7 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         && changeInfo.url.includes("my-account")
         && localStorage.getItem("pendingAuth") === "true") {
       // redirect to the success page
-      browser.tabs.update(tabId, {url: "/success.html"});
+      browser.tabs.update(tabId, {url: "/connect.html"});
     }
 
   }
