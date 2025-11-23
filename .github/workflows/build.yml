@@ -1,4 +1,4 @@
-name: build.yml
+name: Build Extension
 on:
   push:
   pull_request:
