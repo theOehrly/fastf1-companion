@@ -24,7 +24,7 @@ jobs:
       - name: Create Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: firefox-extension-{{ github.sha }}
+          name: firefox-extension-${{ $github.sha }}
           path: web-ext-artifacts/*.zip
 
   chrome-build:
@@ -45,6 +45,6 @@ jobs:
       - name: Create Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: chrome-extension-{{ github.sha }}
+          name: chrome-extension-${{ github.sha }}
           path: src
 
