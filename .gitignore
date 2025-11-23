@@ -1,3 +1,5 @@
 .idea/
+web-ext-artifacts/
 
-src/.amo-upload-uuid
+# build files
+src/manifest.chrome.json
