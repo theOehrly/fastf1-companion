@@ -24,7 +24,7 @@ jobs:
       - name: Create Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: firefox-extension
+          name: firefox-extension-{{ github.sha }}
           path: web-ext-artifacts/*.zip
 
   chrome-build:
@@ -42,13 +42,9 @@ jobs:
           ./chromify.sh
           mv src/manifest.chrome.json src/manifest.json
 
-      - name: Build Chrome Extension (create zip file)
-        run: |
-          zip -r chrome.zip src
-
       - name: Create Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: chrome-extension
-          path: chrome.zip
+          name: chrome-extension-{{ github.sha }}
+          path: src
 
