@@ -1,14 +1,15 @@
 {
   "manifest_version": 3,
   "name": "FastF1 Companion",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icons": {
     "32": "icon.png",
     "64": "icon@2x.png"
   },
   "description": "Companion extension for authenticating FastF1 with you formula1.com / F1TV account.",
   "permissions": [
-    "cookies"
+    "cookies",
+    "storage"
   ],
   "host_permissions": [
     "*://localhost/*",

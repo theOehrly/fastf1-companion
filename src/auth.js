@@ -2,6 +2,13 @@ const statusElement = document.getElementById('status');
 const authButton = document.getElementById('authButton');
 
 
+let browser = chrome;
+
+if (typeof browser !== "undefined") {
+    browser = chrome;
+}
+
+
 authButton.addEventListener('click', async () => {
     authButton.disabled = true;
     statusElement.textContent = 'Authenticating...';
@@ -47,7 +54,10 @@ async function getCookie(name) {
 
 async function sendCookieToLocalhost(loginSession) {
     try {
-        const port = localStorage.getItem('port');
+        const port = await new Promise(resolve => {
+            browser.storage.local.get("port", data => resolve(data.port));
+        });
+
         const response = await fetch(`http://localhost:${port}/auth`, {
             method: 'POST',
             headers: {
@@ -61,7 +71,7 @@ async function sendCookieToLocalhost(loginSession) {
         if (response.ok) {
             statusElement.textContent = 'Authentication successful! You can now close this tab.';
             statusElement.style.color = 'green';
-            localStorage.removeItem('pendingAuth');
+            browser.storage.local.remove('pendingAuth');
         } else {
             throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
         }
