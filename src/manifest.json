@@ -20,7 +20,10 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "@companion.fastf1"
+      "id": "@companion.fastf1",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }
