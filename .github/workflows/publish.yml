@@ -1,0 +1,21 @@
+name: Publish (Firefox only)
+on:
+    workflow_dispatch:
+
+jobs:
+  firefox-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run web-ext sign
+        run: npx --yes web-ext@latest sign --source-dir src --channel=listed --amo-metadata="mozilla-metadata.json" --api-key=${{ secrets.AMO_API_KEY }} --api-secret=${{ secrets.AMO_API_SECRET }}
