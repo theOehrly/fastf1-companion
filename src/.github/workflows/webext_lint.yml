@@ -1,0 +1,23 @@
+name: WebExtension Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  webext-lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run web-ext lint
+        run: npx --yes web-ext@latest lint --source-dir src
